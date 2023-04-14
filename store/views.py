@@ -17,7 +17,9 @@ def product_list(request):
         return Response(serializer.data)
     elif request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
-        return Response('ok')
+        serializer.is_valid(raise_exception=True)
+        serializer.validated_data
+        return Response('ok')        
 
 @api_view()
 def product_detail(request, id):
